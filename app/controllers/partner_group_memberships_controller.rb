@@ -11,7 +11,8 @@ class PartnerGroupMembershipsController < ApplicationController
   end
 
   def destroy
-    current_organization.partner_groups.find(params[:id]).destroy
-    redirect_to partner_groups_path
+    @partner_group = current_organization.partner_groups.find(params[:partner_group_id])
+    @partner_group.partner_group_memberships.find(params[:id]).destroy
+    redirect_to partner_group_path(@partner_group)
   end
 end

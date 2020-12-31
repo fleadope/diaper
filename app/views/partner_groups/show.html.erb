@@ -58,11 +58,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                <% @partner_group.partners.each do |partner| %>
+                <% @partner_group.partner_group_memberships.each do |partner_group_membership| %>
+                  <% partner = partner_group_membership.partner %>
                   <tr>
                     <td><%= link_to partner.name, partner_path(partner) %></td>
                     <td><%= link_to partner.email, "mailto:#{partner.email}" %></td>
-                    
+                    <td><%= delete_button_to(
+                                partner_group_membership_path(partner_group_id: @partner_group.id, id: partner_group_membership.id),
+                                {confirm: confirm_delete_msg("#{partner.name} from this group")}
+                            ) %>
+                    </td>
                   </tr>
                 <% end %>
                 </table>
