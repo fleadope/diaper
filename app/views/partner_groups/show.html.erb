@@ -54,14 +54,17 @@
                 <tr>
                   <th>Partner</th>
                   <th>E-mail</th>
-                  <th>Monthly Limit</th>
-                  <th>Status</th>
-                  <th>Action</th>
                   <th>&nbsp;</th>
                 </tr>
                 </thead>
                 <tbody>
-                <%= render partial: "partners/partner_row", collection: @partner_group.partners %>
+                <% @partner_group.partners.each do |partner| %>
+                  <tr>
+                    <td><%= link_to partner.name, partner_path(partner) %></td>
+                    <td><%= link_to partner.email, "mailto:#{partner.email}" %></td>
+                    
+                  </tr>
+                <% end %>
                 </table>
             </div><!-- /.box-body.table-responsive -->
           </div>
@@ -95,5 +98,5 @@
         </div><!-- modal-body -->
       </div><!-- modal-content -->
     </div><!-- modal-dialog -->
-  </div><!-- addUserModal -->
+  </div><!-- addPartnerModal-->
 </section>
