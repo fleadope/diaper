@@ -1,34 +1,44 @@
-<h1> Dashboard For Parnters </h1>
-<h3> You are Partner ID: <%= current_partner_user&.id %></h3>
-<h3> You are Partner Email: <%= current_partner_user&.email %></h3>
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <% content_for :title, "Families - #{current_partner_user.name}" %>
+        <h1><i class="fa fa-users"></i>&nbsp;&nbsp;
+          Family Details
+          <small>for <%= current_partner_user.name %></small>
+        </h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="<%= '' %>"><i class="fa fa-home fa-lg"></i></a></li>
+          <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
 
-<table class="table">
-  <h1> Partner Requests </h1>
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Coments</th>
-      <th scope="col">Content</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% current_partner_user.requests.each do |cp| %>
-      <tr>
-        <td><%= cp.id %></td>
-        <td><%= cp.comments %></td>
-        <td>
-          <% cp.item_requests.each do |ir| %>
-            <span> <%= "#{ir.name} - #{ir.quantity} " %> </span>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<% current_partner_user.requests.each do |cp| %>
-
-<% end %>
-
-<%= delete_button_to destroy_partner_user_session_path, {text: "Log out", icon: "sign-out", no_confirm: true, size: "md"} %>
-
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col">
+            <%= render partial: "partner_details" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <%# <%= render '/partner_requests/request_card' %> %>
+            <%# <%= render partial: "diaper_request_history" %> %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <%# <%= render partial: "family_details" %> %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

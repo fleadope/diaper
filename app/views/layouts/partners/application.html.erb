@@ -21,8 +21,8 @@
     </a>
 
     <ul class="navbar-nav ml-auto">
-      <% if user_signed_in?  %>
-        <%= render partial: "layouts/navbar" %>
+      <% if partner_user_signed_in?  %>
+        <%= render partial: "layouts/partners/navigation/navbar" %>
       <% end %>
     </ul>
   </nav>
@@ -30,7 +30,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <%= link_to dashboard_path, class: "brand-link" do %>
+    <%= link_to "", class: "brand-link" do %>
       PartnerBase
     <% end %>
 
@@ -38,8 +38,8 @@
     <div class="sidebar">
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <% if user_signed_in? %>
-              <%= render partial: "layouts/sidebar" %>
+          <% if partner_user_signed_in? %>
+            <%= render partial: "layouts/partners/navigation/sidebar" %>
           <% end %>
         </ul>
       </nav>
@@ -63,4 +63,5 @@
 </body>
 <div class="modal fade" id="modal_new" role="dialog"></div>
 </html>
+
 

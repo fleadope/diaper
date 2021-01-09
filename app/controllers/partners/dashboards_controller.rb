@@ -1,6 +1,6 @@
 module Partners
   class DashboardsController < ApplicationController
-    layout 'partners'
+    layout 'partners/application'
 
     protect_from_forgery with: :exception
     skip_before_action :authenticate_user!
